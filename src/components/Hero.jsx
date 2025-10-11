@@ -1,8 +1,8 @@
-import React from "react";
+
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-col justify-center items-start h-screen px-10 text-white overflow-hidden">
+    <section id="Hero" className="relative flex flex-col justify-center items-start h-screen px-10 text-white overflow-hidden">
 
       {/* 🎥 Video de fondo */}
       <video
@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-1/2 h-full bg-black/70 z-10"></div>
 
       {/* 💬 Contenido del Hero */}
-      <div className="relative z-20 max-w-2xl">
+      <div className="relative z-20 max-w-2xl ">
         <h1 className="text-5xl font-bold leading-tight mb-4">
           Ver lo invisible, <br />
           <span className="text-blue-400">mejorar lo esencial</span>

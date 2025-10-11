@@ -25,7 +25,7 @@ const principlesData = [
 
 export default function Principles() {
   return (
-    <section className="w-full py-24 px-6 bg-[#374151] flex justify-center items-center">
+    <section id="Principles" className="w-full py-24 px-6 bg-[#374151] flex justify-center items-center">
       <div className="max-w-6xl w-full text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
