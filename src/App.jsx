@@ -6,7 +6,6 @@ import Principles from "./components/Principles";
 import ComoTrabajamos from "./components/comoTrabajamos";
 import Exito from "./components/Exito";
 import NuestroEquipo from "./components/NuestroEquipo";
-import HeroRetail from "./components/retail/HeroRetail";
 
 function App() {
   return (

@@ -50,7 +50,7 @@ export default function Solutions() {
   useEffect(() => setProgress(0), [activeIndex]);
 
   return (
-    <section className="w-full py-24 px-6 bg-[#374151] flex justify-center">
+    <section className="w-full py-24 px-6 bg-[#EAF2FF] flex justify-center">
       <div
         className="w-full max-w-[1200px] p-10 rounded-3xl shadow-2xl flex flex-col gap-10 transition-all duration-700"
         style={{ background: sections[activeIndex].gradient }}

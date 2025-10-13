@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-1/2 h-full bg-black/70 z-10"></div>
 
       {/* 💬 Contenido del Hero */}
-      <div className="relative z-20 max-w-2xl ">
+      <div className="relative z-20 max-w-2xl px-24">
         <h1 className="text-5xl font-bold leading-tight mb-4">
           Ver lo invisible, <br />
           <span className="text-blue-400">mejorar lo esencial</span>
