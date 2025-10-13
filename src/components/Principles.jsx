@@ -2,24 +2,24 @@ import { motion } from "framer-motion";
 
 const principlesData = [
   {
-    title: "Compromiso",
-    subtitle: "Cumplir siempre",
-    desc: "Nos esforzamos al máximo en cada proyecto, garantizando calidad y responsabilidad.",
+    title: "Kaizen",
+    subtitle: "Mejora continua",
+    desc: "Evolución constante através de pequeños cambios incrementales que generan gran impacto.",
   },
   {
-    title: "Innovación",
-    subtitle: "Pensar diferente",
-    desc: "Buscamos soluciones creativas que hagan la diferencia y generen valor real.",
+    title: "Muda",
+    subtitle: "Eliminación de desperdicio",
+    desc: "Identificamos y eliminamos actividades que no agregan valor al proceso productivo.",
   },
   {
-    title: "Transparencia",
-    subtitle: "Confianza real",
-    desc: "Valoramos la comunicación clara, la honestidad y el respeto en cada paso.",
+    title: "Jidoka",
+    subtitle: "Detección de fallas",
+    desc: "Paramos el proceso ante el primer signo de defecto para evitar la propagación del error.",
   },
   {
-    title: "Excelencia",
-    subtitle: "Más allá del estándar",
-    desc: "Nos impulsa la mejora continua y la pasión por los detalles.",
+    title: "Gemba",
+    subtitle: "Decisión en el lugar",
+    desc: "Las mejores decisiones se toman donde ocurre la acción real, con datos en tiempo real.z",
   },
 ];
 
@@ -31,18 +31,18 @@ export default function Principles() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-4 text-[#fbbd23]"
+          className="text-4xl font-bold mb-4 text-blue-600"
         >
-          Nuestros Principios
+          Principios Lean
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-gray-300 mb-12"
+          className="text-gray-700 mb-12"
         >
-          La base de todo lo que hacemos
+          Nuestra visión artificial está fundamentada en los principios japoneses que revolucionaron la manufactura mundial.
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
