@@ -2,7 +2,7 @@
 export default function CasosDeExito() {
   return (
     <section id="Exito" className="w-full bg-[#EAF2FF] py-16 px-6">
-      <h2 className="text-center text-4xl font-extrabold text-slate-700 mb-10">
+      <h2 className="text-center text-4xl font-extrabold text-blue-600 mb-10">
         Casos de Éxito
       </h2>
 

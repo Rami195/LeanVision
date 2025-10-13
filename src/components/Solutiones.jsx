@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 
 export default function Solutions() {
   const sections = [
-    { brand: "Lean Retail", title: "Toma decisiones basadas en datos", color: "#8a2be2",
-      gradient: "linear-gradient(135deg, #059669, #2563EB)",
-      list: ["Volumen de tráfico, datos demográficos y faciales.","Alertas sobre clientes en espera.","Análisis completo del recorrido del cliente."],
-      image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=900&q=60",
+    { brand: "Lean Retail", title: "Optimizamos la experiencia através de análisis visual", color: "#059669",
+      gradient: "linear-gradient(135deg, #059669, #046647)",
+      list: ["Optimización de layouts de productos.","Detección de colas y tiempos de espera.","Análisis completo del recorrido del cliente."],
+      image: "https://img.freepik.com/vector-gratis/panel-usuario-panel-infografia-plantilla_23-2148378206.jpg?semt=ais_hybrid&w=740&q=80",
     },
-    { brand: "Lean Mobility", title: "Conecta tu negocio con tu audiencia", color: "#00bcd4",
+    { brand: "Lean Mobility", title: "Innovamos el transporte urbano con visión artificial", color: "#00bcd4",
       gradient: "linear-gradient(135deg, #2563EB, #374151)",
-      list: ["Crea señalización digital dirigida y campañas dinámicas.","Edita plantillas sin necesidad de código.","Integra IA para contenido adaptativo en tiempo real."],
-      image: "https://images.unsplash.com/photo-1603570419872-1a5b2a0b9ff0?auto=format&fit=crop&w=900&q=60",
+      list: ["Gestión inteligente de semáforos.","Detección de incidentes en carreteras.","Optimización de rutas de transporte público."],
+      image: "https://images.pexels.com/photos/23743781/pexels-photo-23743781.jpeg",
     },
-    { brand: "Lean Industry", title: "Monetiza tus espacios y datos", color: "#ff7a00",
-      gradient: "linear-gradient(135deg, #EA580C, #2563EB )",
+    { brand: "Lean Industry", title: "Aseguramos calidad desde el origen de la producción", color: "#ff7a00",
+      gradient: "linear-gradient(100deg, #EA580C, #B5460B )",
       list: ["Gestiona tus anuncios de manera profesional.","Analiza ingresos por ubicación y audiencia.","Optimiza rendimientos publicitarios con IA predictiva."],
       image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=900&q=60",
     },
@@ -108,7 +108,7 @@ export default function Solutions() {
             <button
               onClick={goToHeroRetail}
               className="px-7 py-3 rounded-lg text-white font-medium shadow-md hover:shadow-lg transition-all"
-              style={{ background: `linear-gradient(90deg, ${sections[activeIndex].color}, #b180ff)` }}
+              style={{ background: `linear-gradient(90deg, ${sections[activeIndex].color}, #1b1b1bff)` }}
             >
               Conoce más →
             </button>
