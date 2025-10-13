@@ -30,10 +30,11 @@ export default function NuestroEquipo() {
   const [index, setIndex] = useState(0);
   const [cols, setCols] = useState(3);
   const trackRef = useRef(null);
+  const viewportRef = useRef(null);
   const [gapPx, setGapPx] = useState(24);  // gap real en px
   const [stepPx, setStepPx] = useState(0); // desplazamiento = card + gap
 
-  // Responsivo: 3/2/1 columnas
+  // Breakpoints: 1 / 2 / 3 columnas
   useEffect(() => {
     const computeCols = () => {
       const w = window.innerWidth;
@@ -41,31 +42,44 @@ export default function NuestroEquipo() {
       else if (w >= 640) setCols(2);
       else setCols(1);
     };
+    computeCols();
+    window.addEventListener("resize", computeCols);
+    return () => window.removeEventListener("resize", computeCols);
+  }, []);
+
+  // Geometría robusta (gap + ancho de card). Observa cambios de tamaño.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
     const computeGeometry = () => {
-      const track = trackRef.current;
-      if (!track) return;
       const styles = getComputedStyle(track);
       const g = parseFloat(styles.columnGap || styles.gap || "0") || 0;
       setGapPx(g);
-
       const first = track.firstElementChild;
       if (first) {
         const w = first.getBoundingClientRect().width;
-        setStepPx(w + g); // mover en píxeles exactos
+        setStepPx(w + g);
       }
     };
 
-    computeCols();
+    // Inicial y tras carga total (imágenes/fuentes)
     computeGeometry();
-    window.addEventListener("resize", computeCols);
-    window.addEventListener("resize", computeGeometry);
+    const onLoad = () => computeGeometry();
+    window.addEventListener("load", onLoad);
+
+    // ResizeObserver por si cambia ancho del contenedor/ítems
+    const ro = new ResizeObserver(() => computeGeometry());
+    ro.observe(track);
+    if (viewportRef.current) ro.observe(viewportRef.current);
+
     return () => {
-      window.removeEventListener("resize", computeCols);
-      window.removeEventListener("resize", computeGeometry);
+      window.removeEventListener("load", onLoad);
+      ro.disconnect();
     };
   }, []);
 
-  // Si cambian columnas, corregir índice para no pasar el final
+  // Ajustar index cuando cambian columnas para no salir del rango
   useEffect(() => {
     setIndex((i) => Math.min(i, Math.max(0, TEAM.length - cols)));
   }, [cols]);
@@ -81,32 +95,108 @@ export default function NuestroEquipo() {
     [gapPx, cols]
   );
 
-  return (
-    <section id="NuestroEquipo" className="w-full bg-[#EAF2FF] py-14 px-6">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-4xl font-extrabold text-blue-600">Nuestro equipo</h2>
+  // Swipe en móvil (opcional, simple)
+  useEffect(() => {
+    const el = viewportRef.current;
+    if (!el) return;
+    let startX = 0;
+    let dx = 0;
+    const onTouchStart = (e) => { startX = e.touches[0].clientX; dx = 0; };
+    const onTouchMove  = (e) => { dx = e.touches[0].clientX - startX; };
+    const onTouchEnd   = () => {
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) next(); else prev();
+      }
+    };
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: true });
+    el.addEventListener("touchend", onTouchEnd);
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [next, prev]);
 
-        <div className="flex items-end justify-between gap-6">
+  return (
+    <section id="NuestroEquipo" className="w-full bg-[#EAF2FF] py-14 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <h2 className="text-3xl font-extrabold text-blue-600 sm:text-4xl">Nuestro equipo</h2>
+
+          {/* Botones desktop (a la derecha) */}
+          <div className="hidden shrink-0 items-center gap-3 sm:flex">
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="grid h-10 w-10 place-items-center rounded-full bg-neutral-700 text-white shadow hover:bg-neutral-800 disabled:opacity-40"
+              disabled={index === 0}
+            >
+              <span className="-ml-0.5 text-xl">←</span>
+            </button>
+            <button
+              onClick={next}
+              aria-label="Siguiente"
+              className="grid h-10 w-10 place-items-center rounded-full bg-neutral-700 text-white shadow hover:bg-neutral-800 disabled:opacity-40"
+              disabled={index === maxIndex}
+            >
+              <span className="ml-0.5 text-xl">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="relative">
           {/* Viewport */}
-          <div className="relative flex-1 overflow-hidden rounded-[18px]">
+          <div ref={viewportRef} className="relative overflow-hidden rounded-2xl">
+            {/* Botones mobile (flotantes sobre el carrusel) */}
+            <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-between px-2 sm:hidden">
+              <button
+                onClick={prev}
+                aria-label="Anterior"
+                disabled={index === 0}
+                className="pointer-events-auto grid h-10 w-10 place-items-center rounded-full bg-neutral-900/70 text-white backdrop-blur hover:bg-neutral-900/90 disabled:opacity-40"
+              >
+                <span className="-ml-0.5 text-xl">←</span>
+              </button>
+              <button
+                onClick={next}
+                aria-label="Siguiente"
+                disabled={index === maxIndex}
+                className="pointer-events-auto grid h-10 w-10 place-items-center rounded-full bg-neutral-900/70 text-white backdrop-blur hover:bg-neutral-900/90 disabled:opacity-40"
+              >
+                <span className="ml-0.5 text-xl">→</span>
+              </button>
+            </div>
+
             {/* Track */}
             <div
               ref={trackRef}
-              className="flex gap-6 transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)]"
+              className="flex gap-4 sm:gap-5 lg:gap-6 transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)]"
               style={{ transform: `translateX(-${index * stepPx}px)` }}
             >
               {TEAM.map((m, i) => (
                 <article
                   key={i}
-                  className="relative overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_rgba(0,0,0,.22)]"
+                  className="relative overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_rgba(0,0,0,.18)]"
                   style={{ flex: `0 0 ${cardBasis}` }}
                 >
                   <div className="relative">
                     <img
                       src={m.img}
                       alt={m.name}
-                      className="h-[340px] w-full rounded-t-2xl object-cover"
+                      className="h-[300px] w-full rounded-t-2xl object-cover sm:h-[320px] lg:h-[340px]"
                       style={{ filter: "grayscale(100%) brightness(55%) contrast(112%)" }}
+                      onLoad={() => {
+                        // Ajuste fino del step al cargar cada imagen
+                        const styles = getComputedStyle(trackRef.current);
+                        const g = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+                        setGapPx(g);
+                        const first = trackRef.current?.firstElementChild;
+                        if (first) {
+                          const w = first.getBoundingClientRect().width;
+                          setStepPx(w + g);
+                        }
+                      }}
                     />
                     <div className="pointer-events-none absolute inset-0 rounded-t-2xl bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                   </div>
@@ -130,24 +220,16 @@ export default function NuestroEquipo() {
             </div>
           </div>
 
-          {/* Botones */}
-          <div className="hidden shrink-0 items-center gap-4 lg:flex">
-            <button
-              onClick={prev}
-              aria-label="Anterior"
-              className="grid h-12 w-12 place-items-center rounded-full bg-neutral-700 text-white shadow hover:bg-neutral-800 disabled:opacity-50"
-              disabled={index === 0}
-            >
-              <span className="-ml-0.5 text-2xl">←</span>
-            </button>
-            <button
-              onClick={next}
-              aria-label="Siguiente"
-              className="grid h-12 w-12 place-items-center rounded-full bg-neutral-700 text-white shadow hover:bg-neutral-800 disabled:opacity-50"
-              disabled={index === maxIndex}
-            >
-              <span className="ml-0.5 text-2xl">→</span>
-            </button>
+          {/* Indicadores (opcionales) */}
+          <div className="mt-5 flex justify-center gap-2">
+            {Array.from({ length: maxIndex + 1 }).map((_, iDot) => (
+              <button
+                key={iDot}
+                onClick={() => setIndex(iDot)}
+                aria-label={`Ir a slide ${iDot + 1}`}
+                className={`h-2 w-2 rounded-full transition-opacity ${iDot === index ? "bg-blue-600 opacity-100" : "bg-blue-600/40 hover:opacity-80"}`}
+              />
+            ))}
           </div>
         </div>
       </div>
