@@ -82,7 +82,7 @@ export default function NuestroEquipo() {
   );
 
   return (
-    <section id="NuestroEquipo" className="w-full bg-[#F2F5F8] py-14 px-6">
+    <section id="NuestroEquipo" className="w-full bg-[#EAF2FF] py-14 px-6">
       <div className="mx-auto max-w-6xl">
         <h2 className="mb-8 text-4xl font-extrabold text-blue-600">Nuestro equipo</h2>
 
