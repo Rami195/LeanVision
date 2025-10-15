@@ -25,13 +25,13 @@ const principlesData = [
 
 export default function Principles() {
   return (
-    <section id="Principles" className="w-full py-24 px-6 bg-[#EAF2FF] flex justify-center items-center">
-      <div className="max-w-6xl w-full text-center">
+    <section id="Principles" className="w-full py-24 px- bg-[#CCCCCC] flex justify-center items-center">
+      <div className="max-w-7xl w-full text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-4 text-blue-600"
+          className="text-7xl font-bold text-blue-800 mb-4"
         >
           Principios Lean
         </motion.h2>
