@@ -51,14 +51,18 @@ const Navbar = () => {
                    z-50"
       >
         {/* LOGO / BRAND */}
-        <a
-          href="#Hero"
-          onClick={scrollToId("Hero")}
-          className="text-lg font-semibold cursor-pointer text-gray-900 hover:text-blue-600 transition-colors"
-          aria-label="Ir al inicio"
-        >
-          Lean Vision
-        </a>
+  <a
+  href="#Hero"
+  onClick={() => scrollToId("Hero")}
+  className="text-lg font-semibold cursor-pointer text-gray-900 hover:text-blue-600 transition-colors"
+  aria-label="Ir al inicio"
+>
+  <img
+    src="/logo-.jpg"
+    alt="Logo de la marca"
+    className="h-10 w-auto"
+  />
+</a>
 
         {/* NAV LINKS Desktop */}
         <ul className="hidden md:flex items-center gap-6 text-gray-800 font-medium">

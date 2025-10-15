@@ -1,8 +1,8 @@
 // src/components/CasosDeExito.tsx
 export default function CasosDeExito() {
   return (
-    <section id="Exito" className="w-full bg-[#EAF2FF] py-16 px-6">
-      <h2 className="text-center text-4xl font-extrabold text-blue-600 mb-10">
+    <section id="Exito" className="w-full bg-[#CCCCCC] py-16 px-6">
+      <h2 className="text-center text-5xl font-extrabold text-blue-800 mb-10">
         Casos de Éxito
       </h2>
 

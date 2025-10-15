@@ -119,10 +119,10 @@ export default function NuestroEquipo() {
   }, [next, prev]);
 
   return (
-    <section id="NuestroEquipo" className="w-full bg-[#EAF2FF] py-14 px-4 sm:px-6 lg:px-8">
+    <section id="NuestroEquipo" className="w-full bg-[#CCCCCC] py-14 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-6 flex items-center justify-between gap-4">
-          <h2 className="text-3xl font-extrabold text-blue-600 sm:text-4xl">Nuestro equipo</h2>
+          <h2 className="text-3xl font-extrabold text-blue-800 sm:text-4xl ">Nuestro equipo</h2>
 
           {/* Botones desktop (a la derecha) */}
           <div className="hidden shrink-0 items-center gap-3 sm:flex">
@@ -201,7 +201,7 @@ export default function NuestroEquipo() {
                     <div className="pointer-events-none absolute inset-0 rounded-t-2xl bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                   </div>
 
-                  <div className="rounded-b-2xl bg-gradient-to-r from-blue-700 via-blue-600 to-sky-600 px-5 pb-5 pt-4 text-white">
+                  <div className="rounded-b-2xl bg-gradient-to-r from-blue-700 via-blue-800 to-sky-800 px-5 pb-5 pt-4 text-white">
                     <div className="mb-3 h-[2px] w-full bg-white/30" />
                     <div className="flex items-center justify-between gap-3">
                       <div>

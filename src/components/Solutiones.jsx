@@ -2,15 +2,17 @@
 'use client'; 
 import { useEffect, useState } from "react";
 
+
+
 export default function Solutions() {
   const sections = [
     { brand: "Lean Retail", title: "Optimizamos la experiencia através de análisis visual", color: "#059669",
-      gradient: "linear-gradient(135deg, #059669, #046647)",
+      gradient: "linear-gradient(135deg, #2563EB, #374151)",
       list: ["Optimización de layouts de productos.","Detección de colas y tiempos de espera.","Análisis completo del recorrido del cliente."],
       image: "https://img.freepik.com/vector-gratis/panel-usuario-panel-infografia-plantilla_23-2148378206.jpg?semt=ais_hybrid&w=740&q=80",
     },
     { brand: "Lean Mobility", title: "Innovamos el transporte urbano con visión artificial", color: "#00bcd4",
-      gradient: "linear-gradient(135deg, #2563EB, #374151)",
+      gradient: "linear-gradient(135deg, #428124, #215d00)",
       list: ["Gestión inteligente de semáforos.","Detección de incidentes en carreteras.","Optimización de rutas de transporte público."],
       image: "https://images.pexels.com/photos/23743781/pexels-photo-23743781.jpeg",
     },
@@ -50,7 +52,7 @@ export default function Solutions() {
   useEffect(() => setProgress(0), [activeIndex]);
 
   return (
-    <section className="w-full py-24 px-6 bg-[#EAF2FF] flex justify-center">
+    <section className="w-full py-24 px-6 flex justify-center bg-gradient-to-t from-[#CCCCCC] via-[#1B3159] to-[#001334]">
       <div
         className="w-full max-w-[1200px] p-10 rounded-3xl shadow-2xl flex flex-col gap-10 transition-all duration-700"
         style={{ background: sections[activeIndex].gradient }}

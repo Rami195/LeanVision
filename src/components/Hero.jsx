@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="relative z-20 max-w-2xl px-24">
         <h1 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
           Ver lo invisible, <br />
-          <span className="text-blue-600">mejorar lo esencial</span>
+          <span className="text-blue-800">mejorar lo esencial</span>
         </h1>
 
         <p className="mb-8 text-base sm:text-lg text-gray-200">

@@ -1,8 +1,8 @@
 // src/components/ComoTrabajamos.tsx
 export default function ComoTrabajamos() {
   return (
-    <section className="w-full bg-[#EAF2FF] px-4 py-12 sm:px-6 md:py-14 lg:px-8">
-      <h2 className="mb-8 text-center text-3xl font-extrabold text-blue-600 sm:mb-10 sm:text-4xl">
+    <section className="w-full bg-gradient-to-t from-[#CCCCCC] via-[#001c4f] to-[#CCCCCC]">
+      <h2 className="mb-8 text-center text-3xl font-bold text-blue-800 sm:mb-10 sm:text-5xl">
         Cómo Trabajamos
       </h2>
 
