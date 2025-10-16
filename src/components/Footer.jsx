@@ -42,7 +42,7 @@ export default function FooterLean() {
   }
 
   return (
-    <footer id="footer" className="w-full bg-blue-800">
+    <footer id="footer" className="w-full bg-slate-900">
       {/* Contenedor responsivo */}
       <div className="mx-auto px-4 py-10 sm:px-6 md:py-12 lg:px-40">
 
@@ -68,6 +68,11 @@ export default function FooterLean() {
                 <p><span className="font-medium text-white">Celular:</span> +54 261111111</p>
                 <p><span className="font-medium text-white">Ubicación:</span> Mendoza, Argentina</p>
               </div>
+            </div>
+             <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base">
+              <p className="font-medium">Redes</p>
+              
+
             </div>
           </div>
 

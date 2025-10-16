@@ -6,13 +6,13 @@ const OFFSET = 90;
 
 const IconMenu = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
-    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
 
 const IconClose = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
-    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
 
@@ -46,23 +46,32 @@ const Navbar = () => {
     <>
       <nav
         className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[85%]
-                   flex items-center justify-between px-4 md:px-8 py-3
-                   bg-white/70 backdrop-blur-md shadow-lg rounded-2xl border border-white/20
-                   z-50"
+             flex items-center justify-between px-4 md:px-8
+             h-16 md:h-18  /* ← altura fija */
+             bg-white/70 backdrop-blur-md shadow-lg rounded-2xl border border-white/20
+             z-50"
       >
-        {/* LOGO / BRAND */}
-  <a
-  href="#Hero"
-  onClick={() => scrollToId("Hero")}
-  className="text-lg font-semibold cursor-pointer text-gray-900 hover:text-blue-600 transition-colors"
-  aria-label="Ir al inicio"
->
-  <img
-    src="/logoLV.png"
-    alt="Logo de la marca"
-    className="h-10 w-auto"
-  />
-</a>
+
+        <a
+          href="#Hero"
+          onClick={scrollToId("Hero")}
+          className="text-lg font-semibold cursor-pointer text-gray-900 hover:text-blue-600 transition-colors"
+          aria-label="Ir al inicio"
+        >
+      
+          <div className="relative h-10 w-10 md:h-12 md:w-12 overflow-visible">
+            <img
+              src="/logoLV.png"
+              alt="Logo de la marca"
+              className="absolute inset-0 h-full w-full object-contain
+                 origin-left
+                 scale-[1.55] md:scale-[1.7]          
+                 transition-transform duration-200 ease-out
+                 hover:scale-[1.85]"                    
+            />
+          </div>
+        </a>
+
 
         {/* NAV LINKS Desktop */}
         <ul className="hidden md:flex items-center gap-6 text-gray-800 font-medium">
