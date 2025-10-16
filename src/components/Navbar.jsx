@@ -58,7 +58,7 @@ const Navbar = () => {
   aria-label="Ir al inicio"
 >
   <img
-    src="/logo-.jpg"
+    src="/logoLV.png"
     alt="Logo de la marca"
     className="h-10 w-auto"
   />

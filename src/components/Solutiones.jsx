@@ -1,17 +1,14 @@
-// src/components/Solutions.jsx
-'use client'; 
-import { useEffect, useState } from "react";
-
-
+'use client';
+import { useEffect, useState, useRef } from "react";
 
 export default function Solutions() {
   const sections = [
-    { brand: "Lean Retail", title: "Optimizamos la experiencia através de análisis visual", color: "#059669",
+    { brand: "Lean Retail", title: "Optimizamos la experiencia através de análisis visual", color: "#0c6af8ff",
       gradient: "linear-gradient(135deg, #2563EB, #374151)",
       list: ["Optimización de layouts de productos.","Detección de colas y tiempos de espera.","Análisis completo del recorrido del cliente."],
       image: "https://img.freepik.com/vector-gratis/panel-usuario-panel-infografia-plantilla_23-2148378206.jpg?semt=ais_hybrid&w=740&q=80",
     },
-    { brand: "Lean Mobility", title: "Innovamos el transporte urbano con visión artificial", color: "#00bcd4",
+    { brand: "Lean Mobility", title: "Innovamos el transporte urbano con visión artificial", color: "#15b437ff",
       gradient: "linear-gradient(135deg, #428124, #215d00)",
       list: ["Gestión inteligente de semáforos.","Detección de incidentes en carreteras.","Optimización de rutas de transporte público."],
       image: "https://images.pexels.com/photos/23743781/pexels-photo-23743781.jpeg",
@@ -19,23 +16,25 @@ export default function Solutions() {
     { brand: "Lean Industry", title: "Aseguramos calidad desde el origen de la producción", color: "#ff7a00",
       gradient: "linear-gradient(100deg, #EA580C, #B5460B )",
       list: ["Gestiona tus anuncios de manera profesional.","Analiza ingresos por ubicación y audiencia.","Optimiza rendimientos publicitarios con IA predictiva."],
-      image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=900&q=60",
+      image: "/LV-industry-1.jpg",
     },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
 
- 
   const goToHeroRetail = (e) => {
     e.preventDefault();
     const el = document.getElementById("heroRetail");
     if (!el) return;
-    const OFFSET = 90; 
+    const OFFSET = 90;
     const top = el.getBoundingClientRect().top + window.scrollY - OFFSET;
     window.scrollTo({ top, behavior: "smooth" });
   };
 
+  // Carrusel automático
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -51,12 +50,30 @@ export default function Solutions() {
 
   useEffect(() => setProgress(0), [activeIndex]);
 
+  // 🔥 Fade-in al hacer scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setVisible(true);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="w-full py-24 px-6 flex justify-center bg-gradient-to-t from-[#CCCCCC] via-[#1B3159] to-[#001334]">
+    <section
+      ref={sectionRef}
+      className={`w-full py-24 px-6 flex justify-center bg-gradient-to-t from-[#CCCCCC] via-[#1B3159] to-[#001334] fade-in-up ${visible ? "visible" : ""}`}
+    >
       <div
         className="w-full max-w-[1200px] p-10 rounded-3xl shadow-2xl flex flex-col gap-10 transition-all duration-700"
         style={{ background: sections[activeIndex].gradient }}
       >
+        {/* Tarjetas pequeñas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-stretch">
           {sections.map((section, index) => (
             <div
@@ -82,6 +99,7 @@ export default function Solutions() {
           ))}
         </div>
 
+        {/* Sección principal */}
         <div className="flex flex-col md:flex-row items-center gap-12 w-full bg-white/20 backdrop-blur-md p-10 rounded-2xl shadow-lg">
           <div className="w-full md:w-1/2 text-white">
             <span
@@ -106,7 +124,6 @@ export default function Solutions() {
               ))}
             </ul>
 
-            {/* ⬇️ botón con scroll al heroRetail */}
             <button
               onClick={goToHeroRetail}
               className="px-7 py-3 rounded-lg text-white font-medium shadow-md hover:shadow-lg transition-all"
