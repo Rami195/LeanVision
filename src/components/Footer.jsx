@@ -1,18 +1,10 @@
-// src/components/FooterLean.jsx
 "use client";
 import { useState } from "react";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xldppgbb";
 
-// Icono LinkedIn (SVG)
-const IconLinkedIn = (props) => (
-  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" {...props}>
-    <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM0 8.25h4.98V21H0V8.25ZM8 8.25h4.77v1.73h.07c.66-1.18 2.26-2.43 4.65-2.43 4.97 0 5.88 3.27 5.88 7.51V21h-4.98v-5.73c0-1.37-.03-3.12-2.02-3.12-2.02 0-2.33 1.49-2.33 3.02V21H8V8.25Z"/>
-  </svg>
-);
-
 export default function FooterLean() {
-  const [status, setStatus] = useState("idle"); // "idle" | "sending" | "ok" | "error"
+  const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   async function onSubmit(e) {
@@ -49,135 +41,233 @@ export default function FooterLean() {
   }
 
   return (
-    <footer id="footer" className="w-full bg-slate-900">
-      {/* Contenedor responsivo */}
+    <footer id="footer" className="w-full bg-slate-900 py-6">
       <div className="mx-auto px-4 py-10 sm:px-6 md:py-12 lg:px-40">
-
         <div className="grid grid-cols-1 gap-10 md:gap-12 lg:grid-cols-2">
-          {/* Columna izquierda: texto y redes */}
+          {/* ----- Columna de información ----- */}
           <div className="text-white">
-            <p className="text-lg font-semibold sm:text-xl">LeanVision</p>
+            <img className="h-40 rounded-full" src="/logo.png" alt="" />
 
-            <div className="mt-4 space-y-2 text-sm leading-6 sm:text-base">
-              <p>Ver lo invisible, mejorar lo esencial.</p>
+            <div className="mt-4 space-y-2 text-xl leading-6 md:text-base">
+              <h3>Ver lo invisible, mejorar lo esencial.</h3>
               <p>
-                Transformamos procesos a través de visión artificial inspirada en
-                principios Lean, generando valor medible para nuestros clientes.
+                Transformamos procesos a través de visión artificial inspirada
+                en principios Lean, generando valor medible para nuestros
+                clientes.
               </p>
             </div>
 
             <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base">
               <p className="font-medium">Contacto</p>
               <div className="mt-2 grid grid-cols-1 gap-2 text-white/90 sm:grid-cols-1 sm:gap-3">
-                <p><span className="font-medium text-white">Mail:</span> contacto@leanvision.ai</p>
-                <p><span className="font-medium text-white">Celular:</span> +54 261111111</p>
-                <p><span className="font-medium text-white">Ubicación:</span> Mendoza, Argentina</p>
-              </div>
-            </div>
-
-            <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base">
-              <p className="font-medium">Redes</p>
-              <div className="mt-2 flex items-center gap-3">
-                <a
-                  href="https://www.linkedin.com/company/lean-vision-ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full
-                             bg-white/10 text-white hover:bg-white/20 transition
-                             focus:outline-none focus:ring-2 focus:ring-white/40"
-                  aria-label="LeanVision en LinkedIn"
-                  title="LinkedIn"
-                >
-                  <IconLinkedIn className="h-5 w-5" />
-                </a>
+                <p>
+                  <span className="font-medium text-white">Mail:</span>{" "}
+                  contacto@leanvision.ai
+                </p>
+                <p>
+                  <span className="font-medium text-white">Celular:</span> +54
+                  261111111
+                </p>
+                <p>
+                  <span className="font-medium text-white">Ubicación:</span>{" "}
+                  Mendoza, Argentina
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Columna derecha: formulario */}
+          {/* ----- Columna del formulario ----- */}
           <div className="lg:flex lg:justify-end">
             <form
               onSubmit={onSubmit}
-              className="w-full max-w-xl rounded-xl bg-[#e0e0e0] p-5 shadow md:p-6 lg:p-7"
+              className="w-full max-w-xl rounded-xl bg-[#e0e0e0] p-5 pb-4 shadow md:p-6 md:pb-4 lg:p-7 lg:pb-5"
             >
-              <p className="mb-5 text-sm text-slate-800 sm:text-base">
+              <p className="mb-5 text-base font-medium text-slate-800">
                 ¡Hablá con nuestros expertos!
               </p>
 
-              <input type="hidden" name="_subject" value="Nuevo contacto desde LeanVision" />
-              <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="Nuevo contacto desde LeanVision"
+              />
+              <input
+                type="text"
+                name="_gotcha"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {/* Nombre */}
                 <div className="flex flex-col">
-                  <label htmlFor="nombre" className="mb-1 text-sm text-slate-700">Nombre *</label>
+                  <label
+                    htmlFor="nombre"
+                    className="mb-1 text-sm text-slate-700"
+                  >
+                    Nombre *
+                  </label>
                   <input
                     id="nombre"
                     name="nombre"
                     autoComplete="name"
-                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-sky-500"
+                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all"
                     required
                   />
                 </div>
 
+                {/* Apellido */}
                 <div className="flex flex-col">
-                  <label htmlFor="email" className="mb-1 text-sm text-slate-700">Mail *</label>
+                  <label
+                    htmlFor="apellido"
+                    className="mb-1 text-sm text-slate-700"
+                  >
+                    Apellido
+                  </label>
+                  <input
+                    id="apellido"
+                    name="apellido"
+                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all"
+                  />
+                </div>
+
+                {/* Mail */}
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="email"
+                    className="mb-1 text-sm text-slate-700"
+                  >
+                    Mail *
+                  </label>
                   <input
                     id="email"
                     type="email"
                     name="email"
                     autoComplete="email"
-                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-sky-500"
+                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all"
                     required
                   />
                 </div>
+
+                {/* Celular */}
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="celular"
+                    className="mb-1 text-sm text-slate-700"
+                  >
+                    Celular
+                  </label>
+                  <input
+                    id="celular"
+                    name="celular"
+                    type="tel"
+                    placeholder="+54 9 ..."
+                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all"
+                  />
+                </div>
+
+                {/* Compañía */}
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="compania"
+                    className="mb-1 text-sm text-slate-700"
+                  >
+                    Compañía
+                  </label>
+                  <input
+                    id="compania"
+                    name="compania"
+                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all"
+                  />
+                </div>
+
+                {/* Producto */}
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="producto"
+                    className="mb-1 text-sm text-slate-700"
+                  >
+                    Producto
+                  </label>
+                  <select
+                    id="producto"
+                    name="producto"
+                    className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all cursor-pointer"
+                  >
+                    <option value="">Seleccioná un producto</option>
+                    <option value="Lean Mobility">Lean Mobility</option>
+                    <option value="Lean Retailing">Lean Retailing</option>
+                    <option value="Lean Industry">Lean Industry</option>
+                  </select>
+                </div>
               </div>
 
+              {/* Mensaje más corto */}
               <div className="mt-4">
-                <label htmlFor="mensaje" className="mb-1 block text-sm text-slate-700">Tu mensaje *</label>
+                <label
+                  htmlFor="mensaje"
+                  className="mb-1 block text-sm text-slate-700"
+                >
+                  Tu mensaje *
+                </label>
                 <textarea
                   id="mensaje"
                   name="mensaje"
-                  rows={5}
-                  className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-sky-500"
+                  rows={3}
+                  className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-[#1B3159] focus:ring-2 focus:ring-[#1B3159]/30 transition-all resize-y"
                   required
                 />
               </div>
 
-              {/* Mensajes accesibles */}
+              {/* Mensajes de estado */}
               <div className="mt-3 min-h-[1.25rem]" aria-live="polite">
                 {errorMsg && (
                   <p className="text-sm font-medium text-red-700">{errorMsg}</p>
                 )}
                 {status === "ok" && (
-                  <p className="text-sm font-medium text-emerald-700">¡Mensaje enviado!</p>
+                  <p className="text-sm font-medium text-emerald-700">
+                    ¡Mensaje enviado!
+                  </p>
                 )}
               </div>
 
+              {/* Botón */}
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="mt-5 w-full rounded-md bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow hover:bg-slate-950 disabled:opacity-60 sm:text-base"
+                className="mt-5 w-full rounded-md bg-[#1B3159] px-4 py-3 text-sm font-semibold text-white shadow hover:bg-[#2a458f] disabled:opacity-60 sm:text-base transition-colors"
               >
                 {status === "sending" ? "Enviando…" : "Enviar mensaje"}
               </button>
 
               <p className="mt-3 hidden text-xs text-slate-600 sm:block">
-                Al enviar aceptás ser contactad@ para coordinar una demo o responder tu consulta.
+                Al enviar aceptás ser contactad@ para coordinar una demo o
+                responder tu consulta.
               </p>
             </form>
           </div>
         </div>
 
-        {/* Línea y mini footer en móvil/desktop */}
+        {/* Línea inferior */}
         <div className="mt-10 border-t border-white/20 pt-6">
           <div className="flex flex-col items-center justify-between gap-3 text-white/90 sm:flex-row">
-            <p className="text-xs sm:text-sm">© {new Date().getFullYear()} LeanVision. Todos los derechos reservados.</p>
+            <p className="text-xs sm:text-sm">
+              © {new Date().getFullYear()} LeanVision. Todos los derechos
+              reservados.
+            </p>
             <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
-              <a href="#privacidad" className="hover:text-white">Privacidad</a>
+              <a href="#privacidad" className="hover:text-white">
+                Privacidad
+              </a>
               <span className="opacity-40">•</span>
-              <a href="#terminos" className="hover:text-white">Términos</a>
+              <a href="#terminos" className="hover:text-white">
+                Términos
+              </a>
               <span className="opacity-40">•</span>
-              <a href="#contacto" className="hover:text-white">Contacto</a>
+              <a href="#contacto" className="hover:text-white">
+                Contacto
+              </a>
             </div>
           </div>
         </div>
