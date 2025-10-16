@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useEffect, useState, useRef } from "react";
 
 export default function Solutions() {
@@ -13,20 +13,19 @@ export default function Solutions() {
         "Detección de colas y tiempos de espera.",
         "Análisis completo del recorrido del cliente.",
       ],
-      image:
-        "https://img.freepik.com/vector-gratis/panel-usuario-panel-infografia-plantilla_23-2148378206.jpg?semt=ais_hybrid&w=740&q=80",
+      image: "/retailing.png",
     },
     {
       brand: "Lean Mobility",
       title: "Innovamos el transporte urbano con visión artificial",
       color: "#15b437ff",
-      gradient: "linear-gradient(135deg, #428124, #215d00)",
+      gradient: "linear-gradient(135deg, #18a04b, #215d00)",
       list: [
         "Gestión inteligente de semáforos.",
         "Detección de incidentes en carreteras.",
         "Optimización de rutas de transporte público.",
       ],
-      image: "https://images.pexels.com/photos/23743781/pexels-photo-23743781.jpeg",
+      video: "/mobility.mp4",
     },
     {
       brand: "Lean Industry",
@@ -38,7 +37,7 @@ export default function Solutions() {
         "Analiza ingresos por ubicación y audiencia.",
         "Optimiza rendimientos publicitarios con IA predictiva.",
       ],
-      image: "/LV-industry.png",
+      image: "/industry.jpg",
     },
   ];
 
@@ -56,14 +55,14 @@ export default function Solutions() {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  // Carrusel automático (respeta prefers-reduced-motion)
+  // Carrusel automático
   useEffect(() => {
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (reduce) return; // no animar si el usuario lo prefiere
+    if (reduce) return;
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -83,7 +82,8 @@ export default function Solutions() {
   // Fade-in al hacer scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && setVisible(true)),
+      (entries) =>
+        entries.forEach((entry) => entry.isIntersecting && setVisible(true)),
       { threshold: 0.2 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -113,20 +113,32 @@ export default function Solutions() {
               key={index}
               className={`relative text-left cursor-pointer p-5 sm:p-6 rounded-xl shadow-xl overflow-hidden
                           transition-all duration-500 min-h-[140px] sm:min-h-[160px] h-full
-                          ${activeIndex === index ? "bg-white/30 ring-1 ring-white/40 scale-[1.02]" : "bg-white/20 hover:scale-[1.01]"}`}
+                          ${
+                            activeIndex === index
+                              ? "bg-white/30 ring-1 ring-white/40 scale-[1.02]"
+                              : "bg-white/20 hover:scale-[1.01]"
+                          }`}
               onClick={() => setActiveIndex(index)}
             >
               <span
                 className="absolute top-0 left-0 h-full bg-white/20 transition-[width] duration-100 ease-linear"
-                style={{ width: activeIndex === index ? `${progress}%` : "0%", zIndex: 0 }}
+                style={{
+                  width: activeIndex === index ? `${progress}%` : "0%",
+                  zIndex: 0,
+                }}
                 aria-hidden
               />
               <span className="relative z-10 block">
-                <h4 className="text-base sm:text-lg font-semibold mb-1 text-white">{section.brand}</h4>
+                <h4 className="text-base sm:text-lg font-semibold mb-1 text-white">
+                  {section.brand}
+                </h4>
                 <p className="text-xs sm:text-sm text-white/90">
-                  {index === 0 && "Información sobre los visitantes, eficacia de los empleados y más."}
-                  {index === 1 && "Señalización digital dirigida, editor de plantillas sin código y más."}
-                  {index === 2 && "Maximiza tus ingresos publicitarios con una plataforma profesional."}
+                  {index === 0 &&
+                    "Información sobre los visitantes, eficacia de los empleados y más."}
+                  {index === 1 &&
+                    "Señalización digital dirigida, editor de plantillas sin código y más."}
+                  {index === 2 &&
+                    "Maximiza tus ingresos publicitarios con una plataforma profesional."}
                 </p>
               </span>
             </button>
@@ -134,15 +146,20 @@ export default function Solutions() {
         </div>
 
         {/* Sección principal */}
-        <div className="mt-8 sm:mt-10 lg:mt-12
+        <div
+          className="mt-8 sm:mt-10 lg:mt-12
                         flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-10 lg:gap-12
                         w-full bg-white/20 backdrop-blur-md
-                        p-5 sm:p-7 lg:p-10 rounded-2xl shadow-lg">
+                        p-5 sm:p-7 lg:p-10 rounded-2xl shadow-lg"
+        >
           {/* Texto */}
           <div className="w-full md:w-1/2 text-white">
             <span
               className="inline-flex items-center px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full mb-3"
-              style={{ background: "rgba(255,255,255,.12)", boxShadow: "inset 0 0 0 1px rgba(255,255,255,.25)" }}
+              style={{
+                background: "rgba(255,255,255,.12)",
+                boxShadow: "inset 0 0 0 1px rgba(255,255,255,.25)",
+              }}
             >
               {sections[activeIndex].brand}
             </span>
@@ -159,7 +176,9 @@ export default function Solutions() {
 
             <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 text-base sm:text-lg text-gray-100">
               {sections[activeIndex].list.map((item, i) => (
-                <li key={i} className="leading-relaxed">{item}</li>
+                <li key={i} className="leading-relaxed">
+                  {item}
+                </li>
               ))}
             </ul>
 
@@ -167,25 +186,35 @@ export default function Solutions() {
               <button
                 onClick={goToHeroRetail}
                 className="w-full md:w-auto px-6 sm:px-7 py-3 rounded-lg text-white font-medium shadow-md hover:shadow-lg transition-all"
-                style={{ background: `linear-gradient(90deg, ${sections[activeIndex].color}, #1b1b1bff)` }}
+                style={{
+                  background: `linear-gradient(90deg, ${sections[activeIndex].color}, #1b1b1bff)`,
+                }}
               >
                 Conoce más →
               </button>
             </div>
           </div>
 
-          {/* Imagen */}
+          {/* Video o Imagen */}
           <div className="w-full md:w-1/2">
-            <div className="w-full rounded-2xl shadow-xl overflow-hidden">
-              <img
-                key={sections[activeIndex].image}
-                src={sections[activeIndex].image}
-                alt={`${sections[activeIndex].brand} dashboard`}
-                className="w-full h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]
-                           object-cover md:object-contain bg-black/10
-                           transition-opacity duration-700 ease-in-out"
-                loading="lazy"
-              />
+            <div className="w-full rounded-2xl shadow-xl overflow-hidden flex items-center justify-center bg-black/10">
+              {sections[activeIndex].video ? (
+                <video
+                  src={sections[activeIndex].video}
+                  autoPlay
+                  loop
+                  muted
+                  className="w-full h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] object-cover transition-opacity duration-700 ease-in-out"
+                />
+              ) : (
+                <img
+                  key={sections[activeIndex].image}
+                  src={sections[activeIndex].image}
+                  alt={`${sections[activeIndex].brand} dashboard`}
+                  className="w-full h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] object-contain transition-opacity duration-700 ease-in-out"
+                  loading="lazy"
+                />
+              )}
             </div>
           </div>
         </div>
