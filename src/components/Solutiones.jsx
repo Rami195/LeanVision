@@ -16,7 +16,7 @@ export default function Solutions() {
     { brand: "Lean Industry", title: "Aseguramos calidad desde el origen de la producción", color: "#ff7a00",
       gradient: "linear-gradient(100deg, #EA580C, #B5460B )",
       list: ["Gestiona tus anuncios de manera profesional.","Analiza ingresos por ubicación y audiencia.","Optimiza rendimientos publicitarios con IA predictiva."],
-      image: "/LV-industry-1.jpg",
+      image: "/LV-industry.png",
     },
   ];
 
@@ -132,7 +132,6 @@ export default function Solutions() {
               Conoce más →
             </button>
 
-            <p className="text-xs mt-4 text-gray-300">Cumple con LGPD, GDPR y CCPA</p>
           </div>
 
           <div className="w-full md:w-1/2 flex justify-center">
