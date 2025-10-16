@@ -197,7 +197,7 @@ export default function FooterLean() {
                   >
                     <option value="">Seleccioná un producto</option>
                     <option value="Lean Mobility">Lean Mobility</option>
-                    <option value="Lean Retailing">Lean Retailing</option>
+                    <option value="Lean Retailing">Lean Retail</option>
                     <option value="Lean Industry">Lean Industry</option>
                   </select>
                 </div>
