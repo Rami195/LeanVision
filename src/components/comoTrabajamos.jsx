@@ -1,74 +1,181 @@
 // src/components/ComoTrabajamos.tsx
+'use client';
+
+import { motion, useReducedMotion } from 'framer-motion';
+
+const BAR_DURATION = 3.2; // más lento (ajustá a gusto)
+
+// Variantes reutilizables
+const fadeInUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
+  },
+});
+
+const staggerParent = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const popIn = (delay = 0) => ({
+  hidden: { opacity: 0, scale: 0.6 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay },
+  },
+});
+
 export default function ComoTrabajamos() {
+  const reduce = useReducedMotion();
+
   return (
-    <section className="w-full bg-gradient-to-t from-[#CCCCCC] via-[#CCCCCC] to-[#CCCCCC]">
-      <h2 className="mb-8 text-center text-3xl font-bold text-blue-800 sm:mb-10 sm:text-5xl">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="w-full bg-gradient-to-t from-[#CCCCCC] via-[#CCCCCC] to-[#CCCCCC]"
+    >
+      <motion.h2
+        variants={fadeInUp(0)}
+        className="mb-8 text-center text-3xl font-bold text-blue-800 sm:mb-10 sm:text-5xl"
+      >
         Cómo Trabajamos
-      </h2>
+      </motion.h2>
 
-      <div className="relative mx-auto max-w-6xl rounded-2xl bg-[#1F2937] px-4 py-12 shadow-xl sm:px-6 md:py-16 lg:px-8">
-
-        {/* ====== Línea superior con color por tramos (responsive) ====== */}
+      <motion.div
+        variants={fadeInUp(0.05)}
+        className="relative mx-auto max-w-6xl rounded-2xl bg-[#1F2937] px-4 py-12 shadow-xl sm:px-6 md:py-16 lg:px-8"
+      >
+        {/* ====== Línea superior + puntos centrados por tramo ====== */}
         <div className="absolute left-4 right-4 top-8 sm:left-6 sm:right-6 md:top-10">
-          {/* pista tenue */}
-          <div className="h-[6px] w-full rounded-full bg-[#2A3646]" />
+          <div className="relative h-10">
+            {/* pista tenue */}
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[6px] rounded-full bg-[#2A3646]" />
 
-          {/* overlay 1 tramo (móvil: 1 col) */}
-          <div
-            className="pointer-events-none absolute inset-0 h-[6px] rounded-full sm:hidden"
-            style={{
-              background:
-                "linear-gradient(90deg, #10b981 0% 100%)",
-              opacity: 0.95,
-            }}
-            aria-hidden
-          />
+            {/* overlays de color — móvil */}
+            <motion.div
+              initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 1 }}
+              whileInView={reduce ? { opacity: 1 } : { scaleX: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: BAR_DURATION, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: '0% 50%' }}
+              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 h-[6px] rounded-full sm:hidden"
+              aria-hidden
+            >
+              <div
+                className="h-full w-full rounded-full"
+                style={{ background: 'linear-gradient(90deg, #10b981 0% 100%)', opacity: 0.95 }}
+              />
+            </motion.div>
 
-          {/* overlay 2 tramos (tablet: 2 cols) */}
-          <div
-            className="pointer-events-none absolute inset-0 hidden h-[6px] rounded-full sm:block lg:hidden"
-            style={{
-              background:
-                "linear-gradient(90deg, #10b981 0% 50%, #0ea5e9 50% 100%)",
-              opacity: 0.95,
-            }}
-            aria-hidden
-          />
+            {/* overlays de color — tablet */}
+            <motion.div
+              initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 1 }}
+              whileInView={reduce ? { opacity: 1 } : { scaleX: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: BAR_DURATION, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: '0% 50%' }}
+              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 hidden h-[6px] rounded-full sm:block lg:hidden"
+              aria-hidden
+            >
+              <div
+                className="h-full w-full rounded-full"
+                style={{
+                  background: 'linear-gradient(90deg, #10b981 0% 50%, #0ea5e9 50% 100%)',
+                  opacity: 0.95,
+                }}
+              />
+            </motion.div>
 
-          {/* overlay 4 tramos (desktop: 4 cols) */}
-          <div
-            className="pointer-events-none absolute inset-0 hidden h-[6px] rounded-full lg:block"
-            style={{
-              background:
-                "linear-gradient(90deg, #10b981 0% 25%, #0ea5e9 25% 50%, #f97316 50% 75%, #10b981 75% 100%)",
-              opacity: 0.95,
-            }}
-            aria-hidden
-          />
-        </div>
+            {/* overlays de color — desktop */}
+            <motion.div
+              initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 1 }}
+              whileInView={reduce ? { opacity: 1 } : { scaleX: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: BAR_DURATION + 0.4, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: '0% 50%' }}
+              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 hidden h-[6px] rounded-full lg:block"
+              aria-hidden
+            >
+              <div
+                className="h-full w-full rounded-full"
+                style={{
+                  background:
+                    'linear-gradient(90deg, #10b981 0% 25%, #0ea5e9 25% 50%, #f97316 50% 75%, #10b981 75% 100%)',
+                  opacity: 0.95,
+                }}
+              />
+            </motion.div>
 
-        {/* ====== Puntos centrados por columna (1 / 2 / 4) ====== */}
-        {/* móvil: 1 punto */}
-        <div className="pointer-events-none absolute left-4 right-4 top-[calc(2rem-2px)] grid grid-cols-1 sm:hidden">
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow" />
-        </div>
-        {/* tablet: 2 puntos */}
-        <div className="pointer-events-none absolute left-6 right-6 top-[calc(2.25rem-2px)] hidden grid-cols-2 sm:grid lg:hidden">
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow" />
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-sky-500 shadow" />
-        </div>
-        {/* desktop: 4 puntos */}
-        <div className="pointer-events-none absolute left-6 right-6 top-[calc(2.5rem-4px)] hidden grid-cols-4 lg:grid">
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow" />
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-sky-500 shadow" />
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-orange-500 shadow" />
-          <div className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow" />
+            {/* puntos: móvil */}
+            <motion.div
+              variants={staggerParent}
+              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 grid grid-cols-1 sm:hidden"
+            >
+              <motion.div
+                variants={popIn(0.1)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow"
+              />
+            </motion.div>
+
+            {/* puntos: tablet */}
+            <motion.div
+              variants={staggerParent}
+              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 hidden grid-cols-2 sm:grid lg:hidden"
+            >
+              <motion.div
+                variants={popIn(0.1)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow"
+              />
+              <motion.div
+                variants={popIn(0.22)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-sky-500 shadow"
+              />
+            </motion.div>
+
+            {/* puntos: desktop */}
+            <motion.div
+              variants={staggerParent}
+              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 hidden grid-cols-4 lg:grid"
+            >
+              <motion.div
+                variants={popIn(0.1)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow"
+              />
+              <motion.div
+                variants={popIn(0.22)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-sky-500 shadow"
+              />
+              <motion.div
+                variants={popIn(0.34)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-orange-500 shadow"
+              />
+              <motion.div
+                variants={popIn(0.46)}
+                className="place-self-center h-7 w-7 rounded-full border-4 border-[#1F2937] bg-emerald-600 shadow"
+              />
+            </motion.div>
+          </div>
         </div>
 
         {/* ====== Grilla de tarjetas (1 / 2 / 4 columnas) ====== */}
-        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        <motion.div
+          variants={staggerParent}
+          className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
+        >
           {/* Card 1 */}
-          <article className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6">
+          <motion.article
+            variants={fadeInUp(0.05)}
+            whileHover={{ y: reduce ? 0 : -4 }}
+            className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6"
+          >
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/60">
               <svg width="22" height="22" viewBox="0 0 24 24" className="text-emerald-600">
                 <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -82,14 +189,18 @@ export default function ComoTrabajamos() {
               a través de observación directa.
             </p>
             <p className="mt-3 font-semibold text-emerald-700 sm:mt-4">Mapeo completo del estado actual</p>
-          </article>
+          </motion.article>
 
           {/* Card 2 */}
-          <article className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6">
+          <motion.article
+            variants={fadeInUp(0.1)}
+            whileHover={{ y: reduce ? 0 : -4 }}
+            className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6"
+          >
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/60">
               <svg width="22" height="22" viewBox="0 0 24 24" className="text-sky-600">
                 <path
-                  d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12c1 1 1 2 1 2h6s0-1 1-2a7 7 0 0 0-4-12Z"
+                  d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12c1 1 1 2 1 2h6s 0-1 1-2a7 7 0 0 0-4-12Z"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -105,10 +216,14 @@ export default function ComoTrabajamos() {
               hipótesis y ajustar algoritmos.
             </p>
             <p className="mt-3 font-semibold text-sky-600 sm:mt-4">Primera mejora del 15–20%</p>
-          </article>
+          </motion.article>
 
           {/* Card 3 */}
-          <article className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6">
+          <motion.article
+            variants={fadeInUp(0.15)}
+            whileHover={{ y: reduce ? 0 : -4 }}
+            className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6"
+          >
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/60">
               <svg width="22" height="22" viewBox="0 0 24 24" className="text-orange-500">
                 <path
@@ -128,10 +243,14 @@ export default function ComoTrabajamos() {
               del equipo y documentación.
             </p>
             <p className="mt-3 font-semibold text-orange-500 sm:mt-4">Alcance del 80% del potencial</p>
-          </article>
+          </motion.article>
 
           {/* Card 4 */}
-          <article className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6">
+          <motion.article
+            variants={fadeInUp(0.2)}
+            whileHover={{ y: reduce ? 0 : -4 }}
+            className="rounded-2xl bg-[#E7EBF1] p-5 shadow-[0_6px_20px_rgba(0,0,0,.25)] sm:p-6"
+          >
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/60">
               <svg width="22" height="22" viewBox="0 0 24 24" className="text-emerald-700">
                 <path
@@ -152,9 +271,9 @@ export default function ComoTrabajamos() {
               según principios de mejora continua.
             </p>
             <p className="mt-3 font-semibold text-emerald-700 sm:mt-4">Mejora sostenida del 30%+</p>
-          </article>
-        </div>
-      </div>
-    </section>
+          </motion.article>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }
