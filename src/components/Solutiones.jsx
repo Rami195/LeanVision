@@ -19,7 +19,7 @@ export default function Solutions() {
       image: "/LV-industry.png",
     },
   ];
-
+  
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const sectionRef = useRef(null);

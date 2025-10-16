@@ -4,6 +4,13 @@ import { useState } from "react";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xldppgbb";
 
+// Icono LinkedIn (SVG)
+const IconLinkedIn = (props) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" {...props}>
+    <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM0 8.25h4.98V21H0V8.25ZM8 8.25h4.77v1.73h.07c.66-1.18 2.26-2.43 4.65-2.43 4.97 0 5.88 3.27 5.88 7.51V21h-4.98v-5.73c0-1.37-.03-3.12-2.02-3.12-2.02 0-2.33 1.49-2.33 3.02V21H8V8.25Z"/>
+  </svg>
+);
+
 export default function FooterLean() {
   const [status, setStatus] = useState("idle"); // "idle" | "sending" | "ok" | "error"
   const [errorMsg, setErrorMsg] = useState("");
@@ -42,13 +49,12 @@ export default function FooterLean() {
   }
 
   return (
-    <footer id="footer" className="w-full bg- bg-slate-900 py-10">"
+    <footer id="footer" className="w-full bg-slate-900">
       {/* Contenedor responsivo */}
       <div className="mx-auto px-4 py-10 sm:px-6 md:py-12 lg:px-40">
 
-
         <div className="grid grid-cols-1 gap-10 md:gap-12 lg:grid-cols-2">
-
+          {/* Columna izquierda: texto y redes */}
           <div className="text-white">
             <p className="text-lg font-semibold sm:text-xl">LeanVision</p>
 
@@ -62,16 +68,33 @@ export default function FooterLean() {
 
             <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base">
               <p className="font-medium">Contacto</p>
-              {/* En móvil se apilan, en md usan dos columnas compactas */}
               <div className="mt-2 grid grid-cols-1 gap-2 text-white/90 sm:grid-cols-1 sm:gap-3">
                 <p><span className="font-medium text-white">Mail:</span> contacto@leanvision.ai</p>
                 <p><span className="font-medium text-white">Celular:</span> +54 261111111</p>
                 <p><span className="font-medium text-white">Ubicación:</span> Mendoza, Argentina</p>
               </div>
             </div>
+
+            <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base">
+              <p className="font-medium">Redes</p>
+              <div className="mt-2 flex items-center gap-3">
+                <a
+                  href="https://www.linkedin.com/company/lean-vision-ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full
+                             bg-white/10 text-white hover:bg-white/20 transition
+                             focus:outline-none focus:ring-2 focus:ring-white/40"
+                  aria-label="LeanVision en LinkedIn"
+                  title="LinkedIn"
+                >
+                  <IconLinkedIn className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
           </div>
 
-
+          {/* Columna derecha: formulario */}
           <div className="lg:flex lg:justify-end">
             <form
               onSubmit={onSubmit}
@@ -83,7 +106,6 @@ export default function FooterLean() {
 
               <input type="hidden" name="_subject" value="Nuevo contacto desde LeanVision" />
               <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
-
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="flex flex-col">
@@ -139,7 +161,6 @@ export default function FooterLean() {
                 {status === "sending" ? "Enviando…" : "Enviar mensaje"}
               </button>
 
-              {/* Notita legal/chica que se oculta en xs si querés */}
               <p className="mt-3 hidden text-xs text-slate-600 sm:block">
                 Al enviar aceptás ser contactad@ para coordinar una demo o responder tu consulta.
               </p>
