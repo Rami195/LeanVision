@@ -132,7 +132,6 @@ export default function Solutions() {
               Conoce más →
             </button>
 
-            <p className="text-xs mt-4 text-gray-300">Cumple con LGPD, GDPR y CCPA</p>
           </div>
 
           <div className="w-full md:w-1/2 flex justify-center">
