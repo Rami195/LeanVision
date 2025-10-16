@@ -42,7 +42,7 @@ export default function FooterLean() {
   }
 
   return (
-    <footer id="footer" className="w-full bg-blue-800">
+    <footer id="footer" className="w-full bg- bg-slate-900 py-10">"
       {/* Contenedor responsivo */}
       <div className="mx-auto px-4 py-10 sm:px-6 md:py-12 lg:px-40">
 

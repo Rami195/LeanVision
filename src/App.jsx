@@ -15,7 +15,6 @@ function App() {
       <Solutions />
       <Principles/>
       <ComoTrabajamos/>
-      <Exito/>
       <NuestroEquipo/>
 
     </div>
