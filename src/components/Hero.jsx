@@ -3,7 +3,7 @@ const Hero = () => {
   return (
     <section
       id="Hero"
-      className="relative flex h-screen items-center text-white overflow-hidden font-titillium"
+      className="relative flex h-screen items-center text-white overflow-hidden font-titillium pt-[120px]" // 👈 agregado
     >
       {/* 🎥 Video de fondo */}
       <video
@@ -37,10 +37,9 @@ const Hero = () => {
           h-full
         "
       >
-        {/* ❗ Título más grande y centrado */}
         <h1
           className="
-            mb-8 sm:mb-10 font-bold leading-tight font-sans
+            mb-8 sm:mb-10 font-bold leading-tight font-pt-sans-caption
             text-[clamp(2.5rem,8vw,5rem)]
           "
         >
@@ -48,7 +47,6 @@ const Hero = () => {
           <span className="text-blue-800">mejorar lo esencial</span>
         </h1>
 
-        {/* Párrafo más grande y con más espacio */}
         <p
           className="
             mb-24 sm:mb-28 text-gray-200
@@ -61,7 +59,6 @@ const Hero = () => {
           imágenes en decisiones que generan valor medible.
         </p>
 
-        {/* Botones más grandes y con animación “breathing” */}
         <div className="flex flex-col sm:flex-row gap-6 max-w-max animate-breathe">
           <a
             href="#footer"

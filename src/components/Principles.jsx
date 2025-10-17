@@ -30,12 +30,12 @@ export default function Principles() {
       className="w-full py-24 bg-[#CCCCCC] flex justify-center items-center font-titillium"
     >
       <div className="max-w-7xl w-full text-center px-6 sm:px-8 lg:px-10">
-        {/* 🔹 Título principal (mantiene fuente base) */}
+        {/* 🔹 Título principal con PT Sans Caption */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-blue-800 mb-4 font-sans"
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-blue-800 mb-4 font-pt-sans-caption"
         >
           Principios Lean
         </motion.h2>
@@ -61,7 +61,7 @@ export default function Principles() {
               transition={{ duration: 0.5, delay: i * 0.2 }}
               className="bg-white text-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
             >
-              <h3 className="text-2xl font-semibold mb-2 text-[#2a458f] font-sans">
+              <h3 className="text-2xl font-semibold mb-2 text-[#2a458f] font-pt-sans-caption">
                 {card.title}
               </h3>
               <h4 className="text-[#fbbd23] mb-3 font-medium">
