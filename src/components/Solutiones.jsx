@@ -14,7 +14,7 @@ export default function Solutions() {
         "Análisis completo del recorrido del cliente.",
       ],
       image: "/retailing.png",
-      logo: "/public/logoretail.png",
+      logo: "/logoretail.png",
     },
     {
       brand: "Lean Mobility",
@@ -27,7 +27,7 @@ export default function Solutions() {
         "Optimización de rutas de transporte público.",
       ],
       video: "/mobility.mp4",
-      logo: "/public/logomobility.png",
+      logo: "/logomobility.png",
     },
     {
       brand: "Lean Industry",
@@ -40,7 +40,7 @@ export default function Solutions() {
         "Optimiza rendimientos publicitarios con IA predictiva.",
       ],
       image: "/industry.jpg",
-      logo: "/public/logoindustry.png",
+      logo: "/logoindustry.png",
     },
   ];
 
