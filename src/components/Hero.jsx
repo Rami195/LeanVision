@@ -17,49 +17,58 @@ const Hero = () => {
         Tu navegador no soporta videos HTML5.
       </video>
 
-      {/* 🌓 Cortina sombreada: 50% izquierda */}
-      <div className="absolute top-0 left-0 h-full w-1/2 bg-black/70 z-10" />
+      {/* 🌓 Cortina sombreada */}
+      <div
+        className="
+          absolute top-0 left-0 h-full w-full
+          bg-black/60 sm:bg-black/70
+          sm:w-1/2
+          z-10
+        "
+      />
 
       {/* 💬 Contenido */}
       <div
         className="
-          relative z-20 w-1/2
-          pl-6 sm:pl-8 lg:pl-12 xl:pl-16
-          pr-4
-          max-w-full
+          relative z-20 w-full sm:w-1/2
+          px-6 sm:px-8 lg:px-12 xl:px-16
+          flex flex-col justify-center items-center sm:items-start
+          text-center sm:text-left
+          h-full
         "
       >
-        {/* ❗ h1 conserva su fuente base (no Titillium) */}
+        {/* ❗ Título más grande y centrado */}
         <h1
           className="
-            mb-4 font-bold leading-tight font-sans
-            text-[clamp(1.75rem,5vw,3.75rem)]
+            mb-8 sm:mb-10 font-bold leading-tight font-sans
+            text-[clamp(2.5rem,8vw,5rem)]
           "
         >
           Ver lo invisible, <br />
           <span className="text-blue-800">mejorar lo esencial</span>
         </h1>
 
-        {/* Párrafo con Titillium */}
+        {/* Párrafo más grande y con más espacio */}
         <p
           className="
-            mb-8 text-gray-200
-            text-[clamp(0.95rem,1.6vw,1.125rem)]
+            mb-24 sm:mb-28 text-gray-200
+            text-[clamp(1.25rem,2vw,1.5rem)]
             leading-relaxed
+            max-w-lg
           "
         >
           Con visión artificial inspirada en la metodología Lean, transformamos
           imágenes en decisiones que generan valor medible.
         </p>
 
-        {/* Botones con Titillium */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        {/* Botones más grandes y con animación “breathing” */}
+        <div className="flex flex-col sm:flex-row gap-6 max-w-max animate-breathe">
           <a
             href="#footer"
             className="
               inline-flex items-center justify-center rounded-full
-              bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700 transition
-              text-[clamp(0.95rem,1.3vw,1rem)]
+              bg-blue-600 px-10 py-4 font-semibold hover:bg-blue-700 transition
+              text-[clamp(1rem,1.5vw,1.125rem)]
             "
           >
             Solicita una demo
@@ -68,8 +77,8 @@ const Hero = () => {
             href="#Principles"
             className="
               inline-flex items-center justify-center rounded-full
-              border border-white/70 bg-white/10 px-6 py-3 font-semibold hover:bg-white/20 transition
-              text-[clamp(0.95rem,1.3vw,1rem)]
+              border border-white/70 bg-white/10 px-10 py-4 font-semibold hover:bg-white/20 transition
+              text-[clamp(1rem,1.5vw,1.125rem)]
             "
           >
             Conocé más
