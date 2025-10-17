@@ -3,7 +3,7 @@ const Hero = () => {
   return (
     <section
       id="Hero"
-      className="relative flex h-screen items-center text-white overflow-hidden"
+      className="relative flex h-screen items-center text-white overflow-hidden font-titillium"
     >
       {/* 🎥 Video de fondo */}
       <video
@@ -20,7 +20,7 @@ const Hero = () => {
       {/* 🌓 Cortina sombreada: 50% izquierda */}
       <div className="absolute top-0 left-0 h-full w-1/2 bg-black/70 z-10" />
 
-      {/* 💬 Contenido: mismo ancho que la cortina, padding responsivo */}
+      {/* 💬 Contenido */}
       <div
         className="
           relative z-20 w-1/2
@@ -29,20 +29,22 @@ const Hero = () => {
           max-w-full
         "
       >
+        {/* ❗ h1 conserva su fuente base (no Titillium) */}
         <h1
           className="
-            mb-4 font-bold leading-tight
-            text-[clamp(1.75rem,5vw,3.75rem)]   /* ≈ 28px → 60px */
+            mb-4 font-bold leading-tight font-sans
+            text-[clamp(1.75rem,5vw,3.75rem)]
           "
         >
           Ver lo invisible, <br />
           <span className="text-blue-800">mejorar lo esencial</span>
         </h1>
 
+        {/* Párrafo con Titillium */}
         <p
           className="
             mb-8 text-gray-200
-            text-[clamp(0.95rem,1.6vw,1.125rem)]  /* ≈ 15px → 18px */
+            text-[clamp(0.95rem,1.6vw,1.125rem)]
             leading-relaxed
           "
         >
@@ -50,6 +52,7 @@ const Hero = () => {
           imágenes en decisiones que generan valor medible.
         </p>
 
+        {/* Botones con Titillium */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <a
             href="#footer"

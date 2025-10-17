@@ -7,7 +7,7 @@ export default function Solutions() {
       brand: "Lean Retail",
       title: "Optimizamos la experiencia a través de análisis visual",
       color: "#15b437ff",
-      gradient: "linear-gradient(135deg, #18a04b, #215d00)",
+      gradient: "linear-gradient(135deg, #2563EB, #374151)",
       list: [
         "Optimización de layouts de productos.",
         "Detección de colas y tiempos de espera.",
@@ -20,7 +20,7 @@ export default function Solutions() {
       brand: "Lean Mobility",
       title: "Innovamos el transporte urbano con visión artificial",
       color: "#0c6af8ff",
-      gradient: "  linear-gradient(135deg, #2563EB, #374151)",
+      gradient: "linear-gradient(135deg, #18a04b, #215d00)",
       list: [
         "Gestión inteligente de semáforos.",
         "Detección de incidentes en carreteras.",
@@ -33,7 +33,7 @@ export default function Solutions() {
       brand: "Lean Industry",
       title: "Aseguramos calidad desde el origen de la producción",
       color: "#ff7a00",
-      gradient: "linear-gradient(100deg, #EA580C, #B5460B )",
+      gradient: "linear-gradient(100deg, #EA580C, #B5460B)",
       list: [
         "Gestiona tus anuncios de manera profesional.",
         "Analiza ingresos por ubicación y audiencia.",
@@ -99,7 +99,7 @@ export default function Solutions() {
         style={{ background: sections[activeIndex].gradient }}
       >
         {/* Minicards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 w-full items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 w-full items-stretch font-titillium">
           {sections.map((section, index) => (
             <button
               type="button"
@@ -116,7 +116,7 @@ export default function Solutions() {
                 aria-hidden
               />
 
-              {/* LOGO centrado a la derecha (único) */}
+              {/* LOGO centrado a la derecha */}
               <div
                 className="absolute right-4 sm:right-5 top-1/2 -translate-y-1/2 pointer-events-none z-[1]"
                 aria-hidden
@@ -129,7 +129,7 @@ export default function Solutions() {
                 />
               </div>
 
-              {/* Texto (SIN logo a la izquierda) */}
+              {/* Texto */}
               <span className="relative z-10 block pr-16 sm:pr-20">
                 <h4 className="text-base sm:text-lg font-semibold text-white mb-1">
                   {section.brand}
@@ -142,17 +142,15 @@ export default function Solutions() {
               </span>
             </button>
           ))}
-
         </div>
 
         {/* Sección principal */}
         <div
-          className="mt-8 sm:mt-10 lg:mt-12 flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-10 lg:gap-12
+          className="font-titillium mt-8 sm:mt-10 lg:mt-12 flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-10 lg:gap-12
                      w-full bg-white/20 backdrop-blur-md p-5 sm:p-7 lg:p-10 rounded-2xl shadow-lg"
         >
           {/* Texto */}
           <div className="w-full md:w-1/2 text-white">
-            {/* Chapita con logo + marca */}
             <span
               className="inline-flex items-center gap-2 px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full mb-3"
               style={{ background: "rgba(255,255,255,.12)", boxShadow: "inset 0 0 0 1px rgba(255,255,255,.25)" }}
@@ -196,7 +194,6 @@ export default function Solutions() {
 
           {/* Media */}
           <div className="w-full md:w-1/2">
-            {/* El alto va en el contenedor, no en la imagen */}
             <div className="relative w-full h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]
                   rounded-2xl shadow-xl overflow-hidden bg-black/10">
               {sections[activeIndex].video ? (
@@ -219,7 +216,6 @@ export default function Solutions() {
               )}
             </div>
           </div>
-
         </div>
       </div>
     </section>
