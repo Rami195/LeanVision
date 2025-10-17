@@ -96,7 +96,7 @@ export default function NuestroEquipo() {
     <section id="NuestroEquipo" className="w-full bg-[#CCCCCC] py-14 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-6 flex items-center justify-between gap-4">
-          <h2 className="text-3xl font-extrabold text-blue-800 sm:text-4xl">Nuestro equipo</h2>
+          <h2 className="text-3xl font-extrabold text-blue-800 sm:text-4xl font-pt-sans-caption">Nuestro equipo</h2>
           <div className="hidden shrink-0 items-center gap-3 sm:flex">
             <button onClick={prev} aria-label="Anterior" className="grid h-10 w-10 place-items-center rounded-full bg-neutral-700 text-white shadow hover:bg-neutral-800 disabled:opacity-40" disabled={index === 0}><span className="-ml-0.5 text-xl">←</span></button>
             <button onClick={next} aria-label="Siguiente" className="grid h-10 w-10 place-items-center rounded-full bg-neutral-700 text-white shadow hover:bg-neutral-800 disabled:opacity-40" disabled={index === maxIndex}><span className="ml-0.5 text-xl">→</span></button>
@@ -135,8 +135,7 @@ export default function NuestroEquipo() {
                   style={{ flex: `0 0 ${cardBasis}` }}
                 >
                   {/* Área imagen */}
-                  <div
-                    className="
+                  <div className="
                       relative
                       bg-[radial-gradient(60%_80%_at_20%_20%,#1B3159_0%,transparent_60%),radial-gradient(70%_80%_at_90%_10%,#0ea5e9_0%,transparent_40%),linear-gradient(180deg,#0e1b35_0%,#0a1428_100%)]
                     "
@@ -148,16 +147,6 @@ export default function NuestroEquipo() {
                       alt={m.name}
                       className="block h-[300px] w-full object-contain object-bottom sm:h-[320px] lg:h-[340px]"
                       style={{ filter: "grayscale(100%) brightness(75%) contrast(110%)" }}
-                      onLoad={() => {
-                        const styles = getComputedStyle(trackRef.current);
-                        const g = parseFloat(styles.columnGap || styles.gap || "0") || 0;
-                        setGapPx(g);
-                        const first = trackRef.current?.firstElementChild;
-                        if (first) {
-                          const w = first.getBoundingClientRect().width;
-                          setStepPx(w + g);
-                        }
-                      }}
                       initial={{ y: 4, opacity: 0.95 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 0.5, ease: [0.2, 0.7, 0.2, 1] }}
@@ -172,8 +161,8 @@ export default function NuestroEquipo() {
                     <div className="mb-3 h-[2px] w-full " />
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <p className="text-[18px] font-extrabold leading-5">{m.name}</p>
-                        <p className="text-sm opacity-90">{m.role}</p>
+                        <p className="text-[18px] font-extrabold font-pt-sans-caption leading-5">{m.name}</p>
+                        <p className="text-sm opacity-90 font-titillium">{m.role}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <a href={m.links.fb} aria-label={`${m.name} Facebook`} className="grid h-8 w-8 place-items-center rounded-full bg-white text-blue-600 shadow hover:opacity-90"><IconFB /></a>

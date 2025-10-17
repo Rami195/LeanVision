@@ -8,8 +8,10 @@ module.exports = {
     extend: {
       fontFamily: {
         titillium: ['"Titillium Web"', 'sans-serif'],
+        'pt-sans-caption': ['"PT Sans Caption"', 'sans-serif'],
       },
     },
   },
   plugins: [],
 }
+

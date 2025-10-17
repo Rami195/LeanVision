@@ -44,7 +44,7 @@ export default function ComoTrabajamos() {
       {/* 🔹 Título principal (mantiene fuente base) */}
       <motion.h2
         variants={fadeInUp(0)}
-        className="mb-8 text-center text-3xl font-bold text-blue-800 sm:mb-10 sm:text-5xl font-sans"
+        className="mb-8 text-center text-3xl font-bold text-blue-800 sm:mb-10 sm:text-5xl font-pt-sans-caption"
       >
         Cómo Trabajamos
       </motion.h2>
@@ -116,7 +116,7 @@ export default function ComoTrabajamos() {
         {/* ===== Grilla de tarjetas ===== */}
         <motion.div
           variants={staggerParent}
-          className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
+          className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4"
         >
           {[
             {
@@ -166,8 +166,8 @@ export default function ComoTrabajamos() {
                 </svg>
               </div>
 
-              {/* h3 mantiene fuente base */}
-              <h3 className="text-xl font-extrabold text-slate-500 sm:text-2xl font-sans">
+              {/* h3 con PT Sans Caption */}
+              <h3 className="text-xl font-extrabold text-slate-500 sm:text-2xl font-pt-sans-caption">
                 {card.title}
               </h3>
               <p className={`mt-1 font-semibold ${card.accent}`}>{card.week}</p>
