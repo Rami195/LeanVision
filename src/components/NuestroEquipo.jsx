@@ -4,12 +4,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const TEAM = [
-  { name: "Emily", role: "Front End Developer", img: "/persona1.png", links: { fb: "#", ig: "#", tw: "#" } },
-  { name: "Jon arshaf", role: "Marketer", img: "/persona2.png", links: { fb: "#", ig: "#", tw: "#" } },
-  { name: "Kani Jon", role: "Designer", img: "/persona3.png", links: { fb: "#", ig: "#", tw: "#" } },
-  { name: "Andrea", role: "ML Engineer", img: "/persona4.png", links: { fb: "#", ig: "#", tw: "#" } },
-  { name: "Lucas", role: "Data Scientist", img: "/persona5.png", links: { fb: "#", ig: "#", tw: "#" } },
-  { name: "Nadia", role: "Product Manager", img: "/persona6.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Luis Vivanco", role: "CEO & Project Manager", img: "/persona1.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Luciano Esperlazza", role: "CTO in Engineering", img: "/persona2.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Pilar Rodriguez", role: "Business Manager", img: "/persona3.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Denis Illesca", role: "Data Scientist & Engineering", img: "/persona4.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Florencia Herreira", role: "Product Marketing Specialist", img: "/persona5.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Manual Moya", role: "Software Developer", img: "/persona6.png", links: { fb: "#", ig: "#", tw: "#" } },
+  { name: "Inara Colihuinca", role: "Developer Manager", img: "/persona7.png", links: { fb: "#", ig: "#", tw: "#" } },
 ];
 
 // Iconos

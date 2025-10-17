@@ -41,14 +41,14 @@ export default function FooterLean() {
   }
 
   return (
-    <footer id="footer" className="w-full bg-slate-900 py-6">
+    <footer id="footer" className="w-full bg-slate-900 py-6 font-titillium">
       <div className="mx-auto px-4 py-10 sm:px-6 md:py-12 lg:px-40">
-        <div className="grid grid-cols-1 gap-10 md:gap-12 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 min-h-[60vh] lg:min-h-0">
           {/* ----- Columna de información ----- */}
-          <div className="text-white">
-            <img className="h-40 rounded-full" src="/logo.png" alt="" />
+          <div className="text-white flex flex-col items-center justify-center lg:items-start lg:justify-start">
+            <img className="h-40 rounded-full mb-6 lg:mb-0" src="/logo.png" alt="Logo LeanVision" />
 
-            <div className="mt-4 space-y-2 text-xl leading-6 md:text-base">
+            <div className="mt-4 space-y-2 text-xl leading-6 md:text-base text-center lg:text-left">
               <h3>Ver lo invisible, mejorar lo esencial.</h3>
               <p>
                 Transformamos procesos a través de visión artificial inspirada
@@ -57,7 +57,7 @@ export default function FooterLean() {
               </p>
             </div>
 
-            <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base">
+            <div className="mt-8 space-y-2 text-sm leading-6 sm:text-base text-center lg:text-left">
               <p className="font-medium">Contacto</p>
               <div className="mt-2 grid grid-cols-1 gap-2 text-white/90 sm:grid-cols-1 sm:gap-3">
                 <p>
@@ -100,12 +100,8 @@ export default function FooterLean() {
               />
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {/* Nombre */}
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="nombre"
-                    className="mb-1 text-sm text-slate-700"
-                  >
+                  <label htmlFor="nombre" className="mb-1 text-sm text-slate-700">
                     Nombre *
                   </label>
                   <input
@@ -117,12 +113,8 @@ export default function FooterLean() {
                   />
                 </div>
 
-                {/* Apellido */}
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="apellido"
-                    className="mb-1 text-sm text-slate-700"
-                  >
+                  <label htmlFor="apellido" className="mb-1 text-sm text-slate-700">
                     Apellido
                   </label>
                   <input
@@ -132,12 +124,8 @@ export default function FooterLean() {
                   />
                 </div>
 
-                {/* Mail */}
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="email"
-                    className="mb-1 text-sm text-slate-700"
-                  >
+                  <label htmlFor="email" className="mb-1 text-sm text-slate-700">
                     Mail *
                   </label>
                   <input
@@ -150,12 +138,8 @@ export default function FooterLean() {
                   />
                 </div>
 
-                {/* Celular */}
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="celular"
-                    className="mb-1 text-sm text-slate-700"
-                  >
+                  <label htmlFor="celular" className="mb-1 text-sm text-slate-700">
                     Celular
                   </label>
                   <input
@@ -167,12 +151,8 @@ export default function FooterLean() {
                   />
                 </div>
 
-                {/* Compañía */}
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="compania"
-                    className="mb-1 text-sm text-slate-700"
-                  >
+                  <label htmlFor="compania" className="mb-1 text-sm text-slate-700">
                     Compañía
                   </label>
                   <input
@@ -182,12 +162,8 @@ export default function FooterLean() {
                   />
                 </div>
 
-                {/* Producto */}
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="producto"
-                    className="mb-1 text-sm text-slate-700"
-                  >
+                  <label htmlFor="producto" className="mb-1 text-sm text-slate-700">
                     Producto
                   </label>
                   <select
@@ -203,12 +179,8 @@ export default function FooterLean() {
                 </div>
               </div>
 
-              {/* Mensaje más corto */}
               <div className="mt-4">
-                <label
-                  htmlFor="mensaje"
-                  className="mb-1 block text-sm text-slate-700"
-                >
+                <label htmlFor="mensaje" className="mb-1 block text-sm text-slate-700">
                   Tu mensaje *
                 </label>
                 <textarea
@@ -220,19 +192,11 @@ export default function FooterLean() {
                 />
               </div>
 
-              {/* Mensajes de estado */}
               <div className="mt-3 min-h-[1.25rem]" aria-live="polite">
-                {errorMsg && (
-                  <p className="text-sm font-medium text-red-700">{errorMsg}</p>
-                )}
-                {status === "ok" && (
-                  <p className="text-sm font-medium text-emerald-700">
-                    ¡Mensaje enviado!
-                  </p>
-                )}
+                {errorMsg && <p className="text-sm font-medium text-red-700">{errorMsg}</p>}
+                {status === "ok" && <p className="text-sm font-medium text-emerald-700">¡Mensaje enviado!</p>}
               </div>
 
-              {/* Botón */}
               <button
                 type="submit"
                 disabled={status === "sending"}
@@ -253,21 +217,14 @@ export default function FooterLean() {
         <div className="mt-10 border-t border-white/20 pt-6">
           <div className="flex flex-col items-center justify-between gap-3 text-white/90 sm:flex-row">
             <p className="text-xs sm:text-sm">
-              © {new Date().getFullYear()} LeanVision. Todos los derechos
-              reservados.
+              © {new Date().getFullYear()} LeanVision. Todos los derechos reservados.
             </p>
             <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
-              <a href="#privacidad" className="hover:text-white">
-                Privacidad
-              </a>
+              <a href="#privacidad" className="hover:text-white">Privacidad</a>
               <span className="opacity-40">•</span>
-              <a href="#terminos" className="hover:text-white">
-                Términos
-              </a>
+              <a href="#terminos" className="hover:text-white">Términos</a>
               <span className="opacity-40">•</span>
-              <a href="#contacto" className="hover:text-white">
-                Contacto
-              </a>
+              <a href="#contacto" className="hover:text-white">Contacto</a>
             </div>
           </div>
         </div>

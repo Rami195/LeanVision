@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        seriftext: ['"DM Serif Text"', 'serif'],
+        titillium: ['"Titillium Web"', 'sans-serif'],
       },
     },
   },
