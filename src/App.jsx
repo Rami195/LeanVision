@@ -7,7 +7,7 @@ import Hero from "./components/Hero";
 import Solutiones from "./components/Solutiones";
 import Principles from "./components/Principles";
 import NuestroEquipo from "./components/NuestroEquipo";
-import ComoTrabajamos from "./components/ComoTrabajamos";
+import ComoTrabajamos from "./components/comoTrabajamos";
 import Footer from "./components/Footer";
 
 // Navbar para subrutas
